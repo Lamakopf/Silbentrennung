@@ -135,33 +135,34 @@
     <!-- Ende des neuen SEO-Bereichs -->
 
 <script>
-        async function splitAndDisplay() {
-            const text = document.getElementById('inputText').value;
-            const response = await fetch('/split-text', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ text: text })
-            });
-            const data = await response.json();
-            const splitWords = data.splitWords;
+async function splitAndDisplay() {
+    const text = document.getElementById('inputText').value;
+    const response = await fetch('/split-text', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: text })
+    });
+    const data = await response.json();
+    const splitWords = data.splitWords;
 
-            let output = '';
-            let colorToggle = true;  // Start with blue
-            for (const word of splitWords) {
-                const syllables = word.split('-');
-                for (let i = 0; i < syllables.length; i++) {
-                    const colorClass = colorToggle ? 'blue' : 'red';
-                    output += `<span class="${colorClass}">${syllables[i]}</span>`;
-                    // Toggle the color if there's another syllable after the current one
-                    if (i < syllables.length - 1) {
-                        colorToggle = !colorToggle;
-                    }
-                }
-                output += ' ';
-            }
+    let output = '';
+    let colorToggle = true;  // Start with blue
 
-            document.getElementById('output').innerHTML = output;
+    for (const word of splitWords) {
+        const syllables = word.split('-');
+        for (let i = 0; i < syllables.length; i++) {
+            const colorClass = colorToggle ? 'blue' : 'red';
+            output += `<span class="${colorClass}">${syllables[i]}</span>`;
+            
+            // Change color for next syllable or word
+            colorToggle = !colorToggle;
         }
+        output += ' ';
+    }
+
+    document.getElementById('output').innerHTML = output;
+}
+
     </script>
 
 </body>
