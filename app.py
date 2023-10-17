@@ -15,5 +15,9 @@ def split_text():
     split_words = [dic.inserted(word) for word in words]
     return jsonify({'splitWords': split_words})
 
+@app.route('/health')
+def health_check():
+    return "Healthy", 200
+
 if __name__ == '__main__':
     app.run(debug=True)
