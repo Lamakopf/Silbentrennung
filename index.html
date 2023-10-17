@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silbenmethode</title>
+    <style>
+        .red { color: red; }
+        .blue { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Silbenmethode</h1>
+    <textarea id="inputText" rows="4" cols="50"></textarea><br>
+    <button onclick="splitAndDisplay()">Text trennen</button>
+    <p id="output"></p>
+
+    <script>
+        async function splitAndDisplay() {
+            const text = document.getElementById('inputText').value;
+            const response = await fetch('/split-text', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text: text })
+            });
+            const data = await response.json();
+            const splitWords = data.splitWords;
+
+            let output = '';
+          let colorToggle = true;  // Start with blue
+          for (const word of splitWords) {
+              const syllables = word.split('-');
+              for (let i = 0; i < syllables.length; i++) {
+                  // Check if the syllable contains non-alphanumeric characters; if so, set the color to blue
+                  if (/[^a-zA-ZäöüßÄÖÜ]/.test(syllables[i])) {
+                      output += `<span class="blue">${syllables[i]}</span>`;
+                  } else {
+                      const colorClass = colorToggle ? 'blue' : 'red';
+                      output += `<span class="${colorClass}">${syllables[i]}</span>`;
+                      // Toggle the color for the next syllable
+                      colorToggle = !colorToggle;
+                  }
+              }
+              // Reset the color toggle to blue for the start of the next word
+              colorToggle = true;
+              output += ' ';
+          }
+
+
+
+
+
+            document.getElementById('output').innerHTML = output;
+        }
+    </script>
+</body>
+</html>
