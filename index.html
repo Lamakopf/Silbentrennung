@@ -135,35 +135,54 @@
     <!-- Ende des neuen SEO-Bereichs -->
 
 <script>
-async function splitAndDisplay() {
-    const text = document.getElementById('inputText').value;
-    const response = await fetch('/split-text', {
+function splitAndDisplay() {
+    const inputText = document.getElementById('inputText').value;
+    fetch('/split-text', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: text })
-    });
-    const data = await response.json();
-    const splitWords = data.splitWords;
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text: inputText })
+    })
+    .then(response => response.json())
+    .then(data => {
+        let output = '';
+        let colorToggle = true;  // Start with blue
 
-    let output = '';
-    let colorToggle = true;  // Start with blue
+        const splitWords = data.splitWords;
 
-    for (const word of splitWords) {
-        const syllables = word.split('-');
-        for (let i = 0; i < syllables.length; i++) {
-            const colorClass = colorToggle ? 'blue' : 'red';
-            output += `<span class="${colorClass}">${syllables[i]}</span>`;
+        for (const word of splitWords) {
+            const syllables = word.split('-');
+            for (let i = 0; i < syllables.length; i++) {
+                const colorClass = colorToggle ? 'blue' : 'red';
+                output += `<span class="${colorClass}">${syllables[i]}</span>`;
+                
+                // Toggle the color if there's another syllable after the current one
+                if (i < syllables.length - 1) {
+                    colorToggle = !colorToggle;
+                }
+            }
+
+            // If the word ends in a punctuation, it should be blue
+            const lastChar = word[word.length - 1];
+            if (!/[a-zA-ZäöüßÄÖÜ]/.test(lastChar)) {
+                output = output.slice(0, -7) + 'blue">' + lastChar + '</span>';
+            }
+
+            // After processing a word, check if the next word starts with a letter.
+            // If it does, toggle the color, so that the next word starts with the opposite color.
+            const nextWordIndex = splitWords.indexOf(word) + 1;
+            if (nextWordIndex < splitWords.length && /^[a-zA-ZäöüßÄÖÜ]/.test(splitWords[nextWordIndex])) {
+                colorToggle = !colorToggle;
+            }
             
-            // Change color for next syllable or word
-            colorToggle = !colorToggle;
+            output += ' ';
         }
-        output += ' ';
-    }
 
-    document.getElementById('output').innerHTML = output;
+        document.getElementById('output').innerHTML = output;
+    });
 }
-
-    </script>
+</script>
 
 </body>
 </html>
