@@ -163,16 +163,9 @@ function splitAndDisplay() {
                 }
             }
 
-            // If the word ends in a punctuation, it should be blue
+            // If the word ends in punctuation, keep the color consistent for the next word
             const lastChar = word[word.length - 1];
             if (!/[a-zA-ZäöüßÄÖÜ]/.test(lastChar)) {
-                output = output.slice(0, -7) + 'blue">' + lastChar + '</span>';
-            }
-
-            // After processing a word, check if the next word starts with a letter.
-            // If it does, toggle the color, so that the next word starts with the opposite color.
-            const nextWordIndex = splitWords.indexOf(word) + 1;
-            if (nextWordIndex < splitWords.length && /^[a-zA-ZäöüßÄÖÜ]/.test(splitWords[nextWordIndex])) {
                 colorToggle = !colorToggle;
             }
             
@@ -182,6 +175,7 @@ function splitAndDisplay() {
         document.getElementById('output').innerHTML = output;
     });
 }
+
 
 
 </script>
