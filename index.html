@@ -147,7 +147,7 @@ function splitAndDisplay() {
     .then(response => response.json())
     .then(data => {
         let output = '';
-        let colorToggle = true;  // Start with blue
+        let colorToggle = true;  // Always start with blue
 
         const splitWords = data.splitWords;
 
@@ -163,11 +163,14 @@ function splitAndDisplay() {
                 }
             }
 
-            // If the word ends in punctuation, keep the color consistent for the next word
+            // If the word ends in punctuation, set the punctuation color to blue
             const lastChar = word[word.length - 1];
             if (!/[a-zA-ZäöüßÄÖÜ]/.test(lastChar)) {
-                colorToggle = !colorToggle;
+                output = output.slice(0, -4) + 'blue">' + lastChar + '</span>';
             }
+
+            // Reset color toggle to always start the next word with blue
+            colorToggle = true;
             
             output += ' ';
         }
