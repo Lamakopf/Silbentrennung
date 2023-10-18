@@ -154,6 +154,12 @@ function splitAndDisplay() {
         for (const word of splitWords) {
             const syllables = word.split('-');
             for (let i = 0; i < syllables.length; i++) {
+                // Check if the current syllable is a punctuation mark
+                if (!/[a-zA-ZäöüßÄÖÜ]/.test(syllables[i])) {
+                    output += `<span class="blue">${syllables[i]}</span>`;
+                    continue;
+                }
+
                 const colorClass = colorToggle ? 'blue' : 'red';
                 output += `<span class="${colorClass}">${syllables[i]}</span>`;
                 
@@ -161,12 +167,6 @@ function splitAndDisplay() {
                 if (i < syllables.length - 1) {
                     colorToggle = !colorToggle;
                 }
-            }
-
-            // If the word ends in punctuation, set the punctuation color to blue
-            const lastChar = word[word.length - 1];
-            if (!/[a-zA-ZäöüßÄÖÜ]/.test(lastChar)) {
-                output = output.slice(0, -4) + 'blue">' + lastChar + '</span>';
             }
 
             // Reset color toggle to always start the next word with blue
@@ -178,6 +178,7 @@ function splitAndDisplay() {
         document.getElementById('output').innerHTML = output;
     });
 }
+
 
 
 
