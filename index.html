@@ -1,140 +1,107 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silbenmethode</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fafafa;
-        }
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Story by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
 
-        .header {
-            display: flex;
-            height: 100vh;
-        }
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
 
-        .hero-image {
-            flex: 1;
-            background: url('https://cdn.discordapp.com/attachments/1154452889960456302/1163903097886756985/lamakopf_An_childrens_book_illustration_of_a_boy_reading_a_book_1fca4a8c-1a37-4ff7-8afd-d6929e876287.png?ex=6541443a&is=652ecf3a&hm=d368f8a321407eaca12570d93188b42f20e9410c0eec8aa90d9efde2cfe2e646&') no-repeat center center;
-            background-size: cover;
-        }
+				<!-- Two -->
+					<section class="wrapper style1 align-center" id="first">
+						<div class="inner">
+							<h1>Lesekompetenz fördern mit dem Silbenschriftkonverter</h1>
+									<p>Die Silbenmethode <strong>erleichtert das Erlernen der deutschen Sprache</strong>. Mit unserem kostenlosen Silbenschriftkonverter können Sie <strong>Texte automatisch in Silben zerlegen und die Vorteile dieser Methode sofort erleben</strong>. Ideal für Leseanfänger, Deutschlernende und Lehrer. Probieren Sie es jetzt aus und erleben Sie, wie einfach Lesen und Schreiben sein kann!</p>
+					<textarea id="inputText" rows="4" placeholder="Geben Sie hier Ihren Text ein..."></textarea>
+					<br></br>
+					<button onclick="splitAndDisplay()">Text trennen</button>
+					<div class="output" id="output"></div>
+			</div>
+						</div>
 
-        .content {
-            flex: 1;
-            padding: 5%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+					</section>
 
-        .hero-text h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
+					<!-- Spotlight -->
+						<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+							<div class="content">
+								<h2>Lesen und Schreiben revolutionieren mit unserem kostenlosen Silben-Generator</h2>
+								<p>Das Erlernen des Lesens und Schreibens in Deutsch kann aufgrund seiner komplexen zusammengesetzten Wörter eine entmutigende Aufgabe sein. Doch mit Hilfe unseres innovativen Silben-Generators ist das Meistern des Deutschen jetzt einfacher denn je. Unser kostenloses Tool nutzt die renommierte Silbenmethode, um Texte in handhabbare Silben zu zerlegen, was wesentlich ist, um die Literalität bei Anfängern, Deutschlernenden und Menschen mit Legasthenie zu fördern.</p>
+							</div>
+							<div class="image">
+								<img src="images/ein-junge-liest.png" alt="" />
+							</div>
+						</section>
 
-        .hero-text p {
-            font-size: 1.5rem;
-            margin-bottom: 50px;
-        }
+						<!-- Spotlight -->
+							<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+								<div class="content">
+									<h2>Vorteile der Silbenmethode</h2>
+									<p>Die Silbenmethode ist eine bewährte Methode, um die Lernkurve für das Lesen und Schreiben zu beschleunigen. Sie vereinfacht komplexe Wörter in handhabbare Abschnitte, was den Lernprozess deutlich einfacher und schneller macht​. Diese Methode konzentriert sich zunächst auf Vokale und integriert allmählich Konsonanten in die Lernübungen, was für das Verständnis der Silbentrennung im Deutschen wesentlich ist​.</p>
+								</div>
+								<div class="image">
+									<img src="images/ein-mädchen-liest.png" alt="" />
+								</div>
+							</section>
 
-        textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
+							<!-- Spotlight -->
+								<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+									<div class="content">
+										<h2>Silben Trennen leicht gemacht</h2>
+										<p>Das Zerlegen von Wörtern in Silben, oder Silben trennen, ist entscheidend für das Verständnis der Struktur deutscher Wörter. Unser Silben-Generator automatisiert diese Aufgabe und macht es zum Kinderspiel, Wörter in Silben zu trennen. Dies ist nicht nur vorteilhaft für das Lesen, sondern auch für das Meistern von Rechtschreibung und Aussprache. Durch das Verständnis der Regeln des Silben Trennens können Lernende ihre Lesefähigkeiten erheblich verbessern​.</p>
+									</div>
+									<div class="image">
+										<img src="images/ein-vater-liest-seinen-kindern-ein-buch-vor.png" alt="" />
+									</div>
+								</section>
 
-        button {
-            padding: 10px 15px;
-            font-size: 1rem;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+								<!-- Spotlight -->
+									<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+										<div class="content">
+											<h2>Erleben Sie die Magie unseres Silben-Generators</h2>
+											<p>Unser Silben-Generator ist ein leistungsstarkes Tool, das darauf ausgelegt ist, das Lesen und Schreiben in Deutsch zu einer angenehmen Reise zu machen. Es zerlegt Text automatisch in Silben, entsprechend den Prinzipien der Silbenmethode. Ob Sie ein Lehrer sind, der Leseunterlagen für Ihre Schüler vorbereitet, ein Lernender, der Deutsch meistern möchte, oder ein Elternteil, das die Lernreise Ihres Kindes unterstützt, unser Silben-Generator ist hier, um Ihnen zu helfen. Die automatische Silbentrennungsfunktion unseres Generators ist ein Game-Changer beim Meistern der deutschen Sprache​.</p>
+										</div>
+										<div class="image">
+											<img src="images/ein-altes-mädchen-liest.png" alt="" />
+										</div>
+									</section>
 
-        button:hover {
-            background-color: #555;
-        }
 
-        .output {
-            margin-top: 20px;
-            width: 100%;
-            border: 1px solid #ddd;
-            padding: 20px;
-        }
 
-        .red { color: red; }
-        .blue { color: blue; }
+				<!-- Footer -->
+					<footer class="wrapper style1 align-center">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands style2 fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+								<li><a href="#" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
+							</ul>
+							<p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+						</div>
+					</footer>
 
-        /* Neuer Bereich für den SEO-Content */
-        .seo-content {
-            background-color: #ffffff;
-            padding: 5% 0;
-        }
+			</div>
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .container img {
-            width: 100%;
-            margin: 20px 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <div class="hero-image"></div>
-        <div class="content">
-            <div class="hero-text">
-                <h1>Silbenmethode</h1>
-                <p>Text einfach in Silben trennen</p>
-            </div>
-            <textarea id="inputText" rows="4" placeholder="Geben Sie hier Ihren Text ein..."></textarea>
-            <button onclick="splitAndDisplay()">Text trennen</button>
-            <div class="output" id="output"></div>
-        </div>
-    </div>
-
-    <!-- Beginn des neuen SEO-Bereichs -->
-    <div class="seo-content">
-        <div class="container">
-            <h2>Lesen und Schreiben revolutionieren mit unserem kostenlosen Silben-Generator</h2>
-            <p>Das Erlernen des Lesens und Schreibens in Deutsch kann aufgrund seiner komplexen zusammengesetzten Wörter eine entmutigende Aufgabe sein. Doch mit Hilfe unseres innovativen Silben-Generators ist das Meistern des Deutschen jetzt einfacher denn je. Unser kostenloses Tool nutzt die renommierte Silbenmethode, um Texte in handhabbare Silben zu zerlegen, was wesentlich ist, um die Literalität bei Anfängern, Deutschlernenden und Menschen mit Legasthenie zu fördern.
-
-</p>
-
-            <img src="bilder/mädchen-liest-buch.png" alt="Beschreibung des Bildes" />
-
-            <h3>Vorteile der Silbenmethode</h3>
-            <p>Die Silbenmethode ist eine bewährte Methode, um die Lernkurve für das Lesen und Schreiben zu beschleunigen. Sie vereinfacht komplexe Wörter in handhabbare Abschnitte, was den Lernprozess deutlich einfacher und schneller macht​<sup><a href="https://www.abc-der-tiere.de/silbenmethode/">1</a></sup>. Diese Methode konzentriert sich zunächst auf Vokale und integriert allmählich Konsonanten in die Lernübungen, was für das Verständnis der Silbentrennung im Deutschen wesentlich ist​<sup><a href="https://gedankenwelt.de/die-silbenmethode-und-ihre-anwendung-im-unterricht/">2</a></sup>.</p>
-
-            <img src="bilder/papa-liest-tochter-geschichte-vor.png" alt="Beschreibung des Bildes" />
-
-            <h3>Silben Trennen leicht gemacht</h3>
-            <p>Das Zerlegen von Wörtern in Silben, oder Silben trennen, ist entscheidend für das Verständnis der Struktur deutscher Wörter. Unser Silben-Generator automatisiert diese Aufgabe und macht es zum Kinderspiel, Wörter in Silben zu trennen. Dies ist nicht nur vorteilhaft für das Lesen, sondern auch für das Meistern von Rechtschreibung und Aussprache. Durch das Verständnis der Regeln des Silben Trennens können Lernende ihre Lesefähigkeiten erheblich verbessern​​.
-
-              <img src="bilder/mädchen-liest-buch-im-wald.png" alt="Beschreibung des Bildes" />
-
-              <h3>Erleben Sie die Magie unseres Silben-Generators</h3>
-              <p>Unser Silben-Generator ist ein leistungsstarkes Tool, das darauf ausgelegt ist, das Lesen und Schreiben in Deutsch zu einer angenehmen Reise zu machen. Es zerlegt Text automatisch in Silben, entsprechend den Prinzipien der Silbenmethode. Ob Sie ein Lehrer sind, der Leseunterlagen für Ihre Schüler vorbereitet, ein Lernender, der Deutsch meistern möchte, oder ein Elternteil, das die Lernreise Ihres Kindes unterstützt, unser Silben-Generator ist hier, um Ihnen zu helfen. Die automatische Silbentrennungsfunktion unseres Generators ist ein Game-Changer beim Meistern der deutschen Sprache​​​.
-
-.
-
-</p>
-        </div>
-    </div>
-    <!-- Ende des neuen SEO-Bereichs -->
-
-<script>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script>
 function splitAndDisplay() {
     const inputText = document.getElementById('inputText').value;
     fetch('/split-text', {
@@ -169,7 +136,7 @@ function splitAndDisplay() {
 
             // Reset color toggle to always start the next word with blue
             colorToggle = true;
-            
+
             output += ' ';
         }
 
@@ -182,5 +149,6 @@ function splitAndDisplay() {
 
 </script>
 
-</body>
+
+	</body>
 </html>
