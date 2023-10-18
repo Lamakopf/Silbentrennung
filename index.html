@@ -154,18 +154,17 @@ function splitAndDisplay() {
         for (const word of splitWords) {
             const syllables = word.split('-');
             for (let i = 0; i < syllables.length; i++) {
-                const colorClass = colorToggle ? 'blue' : 'red';
-                output += `<span class="${colorClass}">${syllables[i]}</span>`;
-                
-                // Toggle the color if there's another syllable after the current one
-                if (i < syllables.length - 1) {
-                    colorToggle = !colorToggle;
+                // If the syllable is a punctuation mark, make it blue
+                if (/[.,!?;:]/.test(syllables[i])) {
+                    output += `<span class="blue">${syllables[i]}</span>`;
+                } else {
+                    const colorClass = colorToggle ? 'blue' : 'red';
+                    output += `<span class="${colorClass}">${syllables[i]}</span>`;
+                    // Toggle the color if there's another syllable after the current one
+                    if (i < syllables.length - 1) {
+                        colorToggle = !colorToggle;
+                    }
                 }
-            }
-
-            // Check if the current word is a punctuation mark and if so, set its color to blue
-            if (!/[a-zA-ZäöüßÄÖÜ]/.test(word[word.length - 1])) {
-                output = output.slice(0, -4) + 'blue">';
             }
 
             // Reset color toggle to always start the next word with blue
