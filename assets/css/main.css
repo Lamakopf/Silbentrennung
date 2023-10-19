@@ -8753,6 +8753,7 @@ input, select, textarea {
 }
 
 .output span {
-    padding: 0 2px;
+    margin-right: 2px;
 }
+
 
