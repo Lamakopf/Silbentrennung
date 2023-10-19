@@ -102,17 +102,23 @@
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
 function splitAndDisplay() {
     const inputText = document.getElementById('inputText').value;
+
+    // Get the selected color scheme
+    const colorScheme = document.getElementById('colorScheme').value;
+    const redClass = colorScheme === 'classicColors' ? 'red classicColors' : 'red';
+    const blueClass = colorScheme === 'classicColors' ? 'blue classicColors' : 'blue';
+
     fetch('/split-text', {
         method: 'POST',
         headers: {
@@ -132,9 +138,9 @@ function splitAndDisplay() {
             for (let i = 0; i < syllables.length; i++) {
                 // If the syllable is a punctuation mark, make it blue
                 if (/[.,!?;:]/.test(syllables[i])) {
-                    output += `<span class="blue">${syllables[i]}</span>`;
+                    output += `<span class="${blueClass}">${syllables[i]}</span>`;
                 } else {
-                    const colorClass = colorToggle ? 'blue' : 'red';
+                    const colorClass = colorToggle ? blueClass : redClass;
                     output += `<span class="${colorClass}">${syllables[i]}</span>`;
                     // Toggle the color if there's another syllable after the current one
                     if (i < syllables.length - 1) {
@@ -152,11 +158,8 @@ function splitAndDisplay() {
         document.getElementById('output').innerHTML = output;
     });
 }
-
-
-
-
 </script>
+
 
 
 	</body>
