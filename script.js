@@ -6,7 +6,7 @@ var Hyphenopoly = {
     },
     "setup": {
         "exceptions": {
-            "global": "Deutsch-lernende"
+            "global": "Deutsch-ler-nen-de"
         },
         "selectors": {
             ".hyphenate": {
@@ -60,7 +60,7 @@ function splitAndDisplay() {
 
             // Reset color toggle to always start the next word with blue
             colorToggle = true;
-            output += ' ';  // Add a space after each word
+            // output += ' ';  // Add a space after each word
         }
 
         document.getElementById('output').innerHTML = output.trim();  // Remove trailing space
