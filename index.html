@@ -128,6 +128,27 @@
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
+		<script>
+    var Separator = "•";
+
+    var Hyphenopoly = {
+        "require": {
+            "de": "FORCEHYPHENOPOLY"
+        },
+        "setup": {
+            "exceptions": { "global" : ""},
+            "selectors": {
+                ".hyphenate": {
+                    "hyphen": Separator,
+                    "minWordLength": 3
+                }
+            }
+        }
+    };
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hyphenopoly/5.2.0/Hyphenopoly.js"></script>
+
+
 
 	</body>
 </html>
