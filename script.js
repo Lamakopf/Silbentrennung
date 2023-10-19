@@ -1,12 +1,12 @@
-const Separator = "•";
+var Separator = "•";
 
-const Hyphenopoly = {
+var Hyphenopoly = {
     "require": {
         "de": "FORCEHYPHENOPOLY"
     },
     "setup": {
         "exceptions": {
-            "global": ""
+            "global": "Deutsch-lernende"
         },
         "selectors": {
             ".hyphenate": {
@@ -15,58 +15,54 @@ const Hyphenopoly = {
             }
         }
     }
-};
+}
 
-document.addEventListener("DOMContentLoaded", function() {
-    const inputTextElement = document.getElementById('inputText');
-    const outputElement = document.getElementById('output');
-    const splitButtonElement = document.getElementById('splitButton');
-    const colorSchemeElement = document.getElementById('colorScheme');
+function splitAndDisplay() {
+    const inputText = document.getElementById('inputText').value;
+    const colorScheme = document.getElementById('colorScheme').value;
 
-    splitButtonElement.addEventListener('click', function() {
-        const inputText = inputTextElement.value;
+    // Define color mappings
+    const colorMappings = {
+        "highContrast": {
+            "blue": "#0000FF",
+            "red": "#FF0000"
+        },
+        "classicColors": {
+            "blue": "#005996",
+            "red": "#96000e"
+        }
+    };
 
-        fetch('/split-text', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                text: inputText
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            let output = '';
-            let colorToggle = true; // Start with blue
-            const splitWords = data.splitWords;
-            const colorScheme = colorSchemeElement.value;
-            const colors = {
-                highContrast: {
-                    blue: 'blue',
-                    red: 'red'
-                },
-                classicColors: {
-                    blue: '#1A4B83',
-                    red: '#C34D47'
-                }
-            };
-            const currentColors = colors[colorScheme];
+    // Get the selected colors
+    const selectedColors = colorMappings[colorScheme];
 
-            for (const word of splitWords) {
-                const syllables = word.split('-');
-                for (let i = 0; i < syllables.length; i++) {
-                    const colorClass = colorToggle ? currentColors.blue : currentColors.red;
-                    output += `<span style="color:${colorClass}">${syllables[i]}</span>`;
-                    if (i < syllables.length - 1 || /[.,!?;:]$/.test(syllables[i])) {
+    Hyphenopoly.hyphenators["de"].then((hyphenator) => {
+        let output = '';
+        let colorToggle = true;  // Always start with blue
+
+        const splitWords = inputText.split(' ');
+
+        for (const word of splitWords) {
+            const syllables = hyphenator(word, { hyphen: Separator }).split(Separator);
+            for (let i = 0; i < syllables.length; i++) {
+                // If the syllable is a punctuation mark, make it blue
+                if (/[.,!?;:]/.test(syllables[i])) {
+                    output += `<span style="color:${selectedColors.blue}">${syllables[i]}</span>`;
+                } else {
+                    const color = colorToggle ? selectedColors.blue : selectedColors.red;
+                    output += `<span style="color:${color}">${syllables[i]}</span>`;
+                    // Toggle the color if there's another syllable after the current one
+                    if (i < syllables.length - 1) {
                         colorToggle = !colorToggle;
                     }
                 }
-                colorToggle = true;
-                output += ' ';
             }
 
-            outputElement.innerHTML = output;
-        });
+            // Reset color toggle to always start the next word with blue
+            colorToggle = true;
+            output += ' ';  // Add a space after each word
+        }
+
+        document.getElementById('output').innerHTML = output.trim();  // Remove trailing space
     });
-});
+}
