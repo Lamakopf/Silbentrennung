@@ -8739,7 +8739,3 @@ input, select, textarea {
 .output span.blue {
     color: blue;
 }
-
-button#splitButton {
-    margin-bottom: 20px;  /* Oder den gewünschten Abstand */
-}
