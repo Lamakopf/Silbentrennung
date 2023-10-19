@@ -8748,3 +8748,11 @@ input, select, textarea {
     color: #1A4B83;
 }
 
+.color-choice {
+    margin-bottom: 20px;
+}
+
+.output span {
+    padding: 0 2px;
+}
+
