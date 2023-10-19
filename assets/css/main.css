@@ -8732,13 +8732,14 @@ input, select, textarea {
 			  src: url('../fonts/nunito-v26-latin-900italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 			}
 
-			.output span.red {
+.blue {
+    color: blue;
+}
+
+.red {
     color: red;
 }
 
-.output span.blue {
-    color: blue;
-}
 
 .output span.red.classicColors {
     color: #C34D47;
