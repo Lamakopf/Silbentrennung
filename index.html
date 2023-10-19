@@ -11,6 +11,25 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<script>
+    var Separator = "•";
+
+    var Hyphenopoly = {
+      "require": {
+        "de": "FORCEHYPHENOPOLY"
+      },
+      "setup": {
+        "exceptions": { "global" : ""},
+        "selectors": {
+          ".hyphenate": {
+            "hyphen": Separator,
+            "minWordLength": 3
+          }
+        }
+      }
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hyphenopoly/5.2.0/Hyphenopoly.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -110,56 +129,6 @@
 <script src="assets/js/breakpoints.min.js"></script>
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
-function splitAndDisplay() {
-    const inputText = document.getElementById('inputText').value;
-
-    // Get the selected color scheme
-    const colorScheme = document.getElementById('colorScheme').value;
-    const redClass = colorScheme === 'classicColors' ? 'red classicColors' : 'red';
-    const blueClass = colorScheme === 'classicColors' ? 'blue classicColors' : 'blue';
-
-    fetch('/split-text', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ text: inputText })
-    })
-    .then(response => response.json())
-    .then(data => {
-        let output = '';
-        let colorToggle = true;  // Always start with blue
-
-        const splitWords = data.splitWords;
-
-        for (const word of splitWords) {
-            const syllables = word.split('-');
-            for (let i = 0; i < syllables.length; i++) {
-                // If the syllable is a punctuation mark, make it blue
-                if (/[.,!?;:]/.test(syllables[i])) {
-                    output += `<span class="${blueClass}">${syllables[i]}</span>`;
-                } else {
-                    const colorClass = colorToggle ? blueClass : redClass;
-                    output += `<span class="${colorClass}">${syllables[i]}</span>`;
-                    // Toggle the color if there's another syllable after the current one
-                    if (i < syllables.length - 1) {
-                        colorToggle = !colorToggle;
-                    }
-                }
-            }
-
-            // Reset color toggle to always start the next word with blue
-            colorToggle = true;
-
-            output += ' ';
-        }
-
-        document.getElementById('output').innerHTML = output;
-    });
-}
-</script>
-
 
 
 	</body>
