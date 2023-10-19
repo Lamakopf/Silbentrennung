@@ -8739,3 +8739,12 @@ input, select, textarea {
 .output span.blue {
     color: blue;
 }
+
+.output span.red.classicColors {
+    color: #C34D47;
+}
+
+.output span.blue.classicColors {
+    color: #1A4B83;
+}
+
