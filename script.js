@@ -12,16 +12,10 @@ Hyphenopoly.config({
     }
 });
 
-
 var Separator = "•";
 
 function splitAndDisplay() {
-    const inputTextElement = document.getElementById('inputText');
-    Hyphenopoly.hyphenate(inputTextElement, "de");  // Manuelles Hyphenieren des eingegebenen Texts
-
-    // ... Rest Ihrer splitAndDisplay-Funktion ...
-}
-
+    const inputText = document.getElementById('inputText').value;
     let output = '';
     let colorToggle = true;  // Always start with blue
 
