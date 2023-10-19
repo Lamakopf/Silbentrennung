@@ -147,6 +147,38 @@
     };
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hyphenopoly/5.2.0/Hyphenopoly.js"></script>
+function colorizeSyllables(text) {
+    let colorScheme = document.getElementById("colorScheme").value;
+    let firstColor = colorScheme === "highContrast" ? "#005996" : "#0000ff";
+    let secondColor = colorScheme === "highContrast" ? "#96000e" : "#ff0000";
+
+    let colorToggle = true;  // Start with the first color
+    let output = '';
+    const words = text.split(' ');
+
+    words.forEach(word => {
+        const syllables = word.split(Separator);
+        syllables.forEach((syllable, index) => {
+            output += `<span style="color: ${colorToggle ? firstColor : secondColor}">${syllable}</span>`;
+            if (index < syllables.length - 1) {
+                colorToggle = !colorToggle;
+            }
+        });
+        colorToggle = true;  // Reset color for the next word
+        output += ' ';
+    });
+
+    return output;
+}
+
+function splitAndDisplay() {
+    const inputText = document.getElementById('inputText').value;
+    const hyphenatedText = Hyphenopoly.get("de")(inputText);
+    const coloredText = colorizeSyllables(hyphenatedText);
+    document.getElementById('output').innerHTML = coloredText;
+}
+
+document.getElementById("splitButton").addEventListener("click", splitAndDisplay);
 
 
 
