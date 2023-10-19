@@ -8752,5 +8752,7 @@ input, select, textarea {
     margin-bottom: 20px;
 }
 
-
+.output span {
+    padding: 0 2px;
+}
 
