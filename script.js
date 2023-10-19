@@ -1,3 +1,13 @@
+
+    Hyphenopoly.config({
+        require: {
+            "de": "FORCEHYPHENOPOLY"
+        },
+        hyphen: "•",
+        minWordLength: 3
+    });
+
+
 var Separator = "•";
 
 var Hyphenopoly = {
