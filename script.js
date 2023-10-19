@@ -2,9 +2,16 @@ Hyphenopoly.config({
     require: {
         "de": "FORCEHYPHENOPOLY"
     },
+    exceptions: {
+        "de": "Deutsch-lern-ende"
+    },
     hyphen: "•",
-    minWordLength: 3
+    minWordLength: 3,
+    setup: {
+        hide: "none"  // Deaktiviert das automatische Verstecken von Elementen beim Laden
+    }
 });
+
 
 var Separator = "•";
 
