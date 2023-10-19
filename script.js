@@ -40,7 +40,8 @@ function splitAndDisplay() {
                     }
                 }
             }
-            colorToggle = true;  // Reset color toggle to always start the next word with blue
+output += ' ';  // Add a space after each word
+colorToggle = true;  // Reset color toggle to always start the next word with blue
         }
         document.getElementById('output').innerHTML = output.trim();
     });
