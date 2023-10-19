@@ -37,27 +37,25 @@
 			<div id="wrapper" class="divided">
 
 				<!-- Two -->
-					<section class="wrapper style1 align-center" id="first">
-						<div class="inner">
-							<h1>Lesekompetenz fördern mit dem Silbenschriftkonverter</h1>
-									<p>Die Silbenmethode <strong>erleichtert das Erlernen der deutschen Sprache</strong>. Mit unserem kostenlosen Silbenschriftkonverter können Sie <strong>Texte automatisch in Silben zerlegen und die Vorteile dieser Methode sofort erleben</strong>. Ideal für Leseanfänger, Deutschlernende und Lehrer. Probieren Sie es jetzt aus und erleben Sie, wie einfach Lesen und Schreiben sein kann!</p>
-					<textarea id="inputText" rows="4" placeholder="Geben Sie hier Ihren Text ein..."></textarea>
-					<br></br>
-							<div class="color-choice">
-    <label for="colorScheme">Farbschema:</label>
-    <select id="colorScheme">
-        <option value="highContrast">Hoher Kontrast</option>
-        <option value="classicColors">Klassische Farben</option>
-    </select>
-</div>
-								<br></br>
+<section class="wrapper style1 align-center" id="first">
+    <div class="inner">
+        <h1>Lesekompetenz fördern mit dem Silbenschriftkonverter</h1>
+        <p>Die Silbenmethode <strong>erleichtert das Erlernen der deutschen Sprache</strong>. Mit unserem kostenlosen Silbenschriftkonverter können Sie <strong>Texte automatisch in Silben zerlegen und die Vorteile dieser Methode sofort erleben</strong>. Ideal für Leseanfänger, Deutschlernende und Lehrer. Probieren Sie es jetzt aus und erleben Sie, wie einfach Lesen und Schreiben sein kann!</p>
+        <textarea id="inputText" rows="4" placeholder="Geben Sie hier Ihren Text ein..."></textarea>
+        <br></br>
+        <div class="color-choice">
+            <label for="colorScheme">Farbschema:</label>
+            <select id="colorScheme">
+                <option value="highContrast">Hoher Kontrast</option>
+                <option value="classicColors">Klassische Farben</option>
+            </select>
+        </div>
+        <br></br>
+        <button id="splitButton" style="margin-bottom: 20px;" onclick="splitAndDisplay()">Text trennen</button>
+        <div class="output hyphenate" id="output"></div>
+    </div>
+</section>
 
-					<button id="splitButton" style="margin-bottom: 20px;" onclick="splitAndDisplay()">Text trennen</button>
-					<div class="output" id="output"></div>
-			</div>
-						</div>
-
-					</section>
 
 					<!-- Spotlight -->
 						<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
