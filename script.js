@@ -41,7 +41,10 @@ function splitAndDisplay() {
     const outputElement = document.getElementById('output');
     outputElement.innerHTML = output.trim();
 
-    // Manually trigger Hyphenopoly hyphenation for the new content
-    Hyphenopoly.hyphenate(outputElement, 'de');
+    // Wait for the hyphenator for German (de) to be ready
+    Hyphenopoly.hyphenators.get("de").then(hyphenator => {
+        // Hyphenate the text content of the output element
+        hyphenator(outputElement);
+    });
 }
 
