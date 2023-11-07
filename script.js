@@ -37,5 +37,11 @@ function splitAndDisplay() {
         output += ' ';  // Add a space after each word
         colorToggle = true;  // Reset color toggle to always start the next word with blue
     }
-    document.getElementById('output').innerHTML = output.trim();
+    
+    const outputElement = document.getElementById('output');
+    outputElement.innerHTML = output.trim();
+
+    // Manually trigger Hyphenopoly hyphenation for the new content
+    Hyphenopoly.hyphenate(outputElement, 'de');
 }
+
